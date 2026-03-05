@@ -1,26 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap");
 @import "tailwindcss";
+@import "tw-animate-css";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary-accent:    #F54C49;
+  --secondary-accent:  #CA605E;
+  --muted-rose:        #A06665;
+  --warm-taupe:        #755E5E;
+  --deep-mocha:        #4B3F3E;
+  --dark-cocoa:        #332222;
+
+  --background:        15 10% 7%;
+  --foreground:        20 15% 93%;
+  --card:              14 11% 10%;
+  --card-foreground:   20 15% 93%;
+  --popover:           14 11% 10%;
+  --popover-foreground:20 15% 93%;
+  --primary:           1 90% 62%;
+  --primary-foreground:0 0% 100%;
+  --secondary:         5 20% 28%;
+  --secondary-foreground: 20 15% 90%;
+  --muted:             10 12% 16%;
+  --muted-foreground:  15 12% 55%;
+  --accent:            5 20% 18%;
+  --accent-foreground: 20 15% 93%;
+  --destructive:       1 90% 62%;
+  --destructive-foreground: 0 0% 100%;
+  --border:            10 12% 18%;
+  --input:             10 12% 16%;
+  --ring:              1 90% 62%;
+  --radius:            0.75rem;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background:           hsl(var(--background));
+  --color-foreground:           hsl(var(--foreground));
+  --color-card:                 hsl(var(--card));
+  --color-card-foreground:      hsl(var(--card-foreground));
+  --color-popover:              hsl(var(--popover));
+  --color-popover-foreground:   hsl(var(--popover-foreground));
+  --color-primary:              hsl(var(--primary));
+  --color-primary-foreground:   hsl(var(--primary-foreground));
+  --color-secondary:            hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted:                hsl(var(--muted));
+  --color-muted-foreground:     hsl(var(--muted-foreground));
+  --color-accent:               hsl(var(--accent));
+  --color-accent-foreground:    hsl(var(--accent-foreground));
+  --color-destructive:          hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border:               hsl(var(--border));
+  --color-input:                hsl(var(--input));
+  --color-ring:                 hsl(var(--ring));
+  --radius-sm:  calc(var(--radius) - 4px);
+  --radius-md:  calc(var(--radius) - 2px);
+  --radius-lg:  var(--radius);
+  --radius-xl:  calc(var(--radius) + 4px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    font-family: 'Geist', 'Noto Sans JP', sans-serif;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Geist', 'Noto Sans JP', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(ellipse 70% 40% at 50% -5%, rgba(245,76,73,0.10) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 30% at 95% 85%, rgba(202,96,94,0.06) 0%, transparent 50%);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Geist', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #4B3F3E; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #CA605E; }
